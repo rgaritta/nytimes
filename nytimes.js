@@ -8,12 +8,12 @@ var endYear;
 
 
 
-  $("#search-button").on("click", function() {
-
-        results = $("#results").text();
-        searchTerm = $("#search-term").text();
-        startYear = $("start-year").text();
-        endYear = $("end-year").text();
+  $("#search").on("click", function() {
+    event.preventDefault();
+        results = $("#num-records-input").val().trim();
+        searchTerm = $("#search-term-input").val().trim();
+        startYear = $("#start-year-input").val().trim() + "0101";
+        endYear = $("#end-year-input").val().trim() + "1231";
         queryURL += "api-key=" + apiKey;
         queryURL += "&" + "q=" + searchTerm;
         if(startYear <= endYear)
@@ -32,14 +32,15 @@ var endYear;
             method: "GET"
           })
         
-          .then()
+          .then(function (response) 
           {
-                //add in the results here
-          }
+                console.log(response);
+          })
         
   });
 
-  $("#clear-button").on("click", function() {
+  $("#clear").on("click", function() {
+    event.preventDefault();
     $("#search-term").empty(" ")
     $("#results").empty("0");
     $("#start-year").empty(" ");
