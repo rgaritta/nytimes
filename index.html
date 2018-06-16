@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+</head>
+
+<div class="jumbotron">
+    <h1 class="text-center">New York Times Search</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3> Search Paramaters </h3>
+
+            <form>
+                <div class="form-search">
+                    <label for="search-term">Search Term </label>
+                    <input type="text" class="form-control" id="search-term-input" required>
+                </div>
+                <div class="form-search">
+                    <label for="num-records">Number of Records to Retrieve</label>
+                    <input type="text" class="form-control" id="num-records-input" placeholder="5" required>
+                    <label for="start-year">Start Year</label>
+                    <input type="text" class="form-control" id="start-year-input">
+                    <label for="end-year">End Year</label>
+                    <input type="text" class="form-control" id="end-year-input">
+                </div>
+                <br>
+                <button type="submit" id="search" class="btn btn-primary">Search</button>
+                <button type="submit" id="clear" class="btn btn-primary">Clear Results</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h3> Top Articles </h3>
+
+            <div id="results">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $("#search").on("click", function() {
+        event.preventDefault();
+        var searchTerm = $("#search-term-input").val().trim();
+        var numRecords = $("#num-records-input").val().trim();
+        var startYear = $("#start-year-input").val().trim();
+        var endYear = $("#end-year-input").val().trim();
+
+        console.log(searchTerm, numRecords, startYear, endYear);
+
+
+    })
+
+    $("#clear").on("click", function() {
+        event.preventDefault();
+
+        $('#results').empty();
+
+
+    })
+
+
+    </script>
